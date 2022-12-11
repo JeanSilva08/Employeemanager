@@ -2,6 +2,7 @@ package tech.lostline.employeemanager.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tech.lostline.employeemanager.exception.UserNotFoundException;
 import tech.lostline.employeemanager.model.Employee;
 import tech.lostline.employeemanager.repo.EmployeeRepo;
 
@@ -32,7 +33,7 @@ public class EmployeeService {
     }
 
     public  Employee findEmployeeById(Long id){
-        return employeeRepo.findEmployeeById(id).orElseThrow(() -> new UserNotFoundException("User by Id")+id+"was not found!");
+        return employeeRepo.findEmployeeById(id).orElseThrow(() -> new UserNotFoundException("User by Id+" + id + "was not found!"));
     }
     public void deleteEmployee(Long id){
         employeeRepo.deleteEmployeeById(id);
